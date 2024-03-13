@@ -44,6 +44,9 @@ const Sidebar = () => {
           {firstName} {lastName}
         </h1>
       </div>
+      <div className="sign-out relative m-6">
+       
+      </div>
       <ul className="nav-items">
         {menu.map((item) => {
             const link= item.link;
@@ -59,18 +62,18 @@ const Sidebar = () => {
         })}
       </ul>
       <div className="sign-out relative m-6">
-      <Button 
-          name={'Sign Out'}
-          type={'submit'}
-          padding={'0.4rem 0.8rem'}
-          borderRad={'0.8rem'}
-          fw={'500'}
-          fs={'1rem'}
-          icon={logout}
-          click={() =>{
-            signOut(() => router.push('/signin'));
-          }}
-        />
+        <Button 
+            name={'Sign Out'}
+            type={'submit'}
+            padding={'0.4rem 0.8rem'}
+            borderRad={'0.8rem'}
+            fw={'500'}
+            fs={'1rem'}
+            icon={logout}
+            click={() =>{
+              signOut(() => router.push('/signin'));
+            }}
+          />
       </div>
     </SidebarStyled>
   )

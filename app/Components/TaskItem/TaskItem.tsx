@@ -5,7 +5,6 @@ import { edit, trash } from '@/app/Utils/icons';
 import React from 'react'
 import styled from 'styled-components';
 import formatDate  from '@/app/Utils/formatDate';
-import CreateContent from '../Models/CreateContent';
 
 interface Props {
     title: string;
@@ -56,9 +55,9 @@ const TaskItem = ({ title, description, date, isCompleted, id  }: Props) => {
 const TaskItemStyled = styled.div`
   padding: 1rem 1rem;
   border-radius: 1rem;
+  border: 1px solid #6FCF97; /* ${(props) => props.theme.colorPrimaryGreen}; */
   background-color: rgba(249, 249, 249, 0.08); /* ${(props) => props.theme.borderColor2}; */
   box-shadow: 1px 7px 12px rgba(8, 18, 69, 0.1); /* ${(props) => props.theme.shadow7}; */
-  border-color: #6FCF97; /* ${(props) => props.theme.colorPrimaryGreen}; */
   height: 16rem;
   display: flex;
   flex-direction: column;
