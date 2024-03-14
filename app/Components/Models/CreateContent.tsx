@@ -14,7 +14,7 @@ const CreateContent = () => {
     const [date, setDate] = useState("");
     const [completed, setCompleted] = useState(false);
     const [important, setImportant] = useState(false);
-    const {theme} = useGlobalState();
+    const {theme, allTasks, closeModel } = useGlobalState();
 
 const handleChange = (name: string) => (e: any) => {
     switch (name) {
@@ -55,7 +55,14 @@ const handleSubmit = async (e: any) => {
         if(res.data.error) {
             toast.error(res.data.error);
         }
-        toast.success('Task created successfully.');
+        
+        if(!res.data.error) {
+            toast.success('Task created successfully.');
+            allTasks();
+            closeModel();
+        }
+        
+
     } catch (error) {
         toast.error('Something went wrong.');
         console.log(error);

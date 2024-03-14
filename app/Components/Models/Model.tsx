@@ -11,6 +11,7 @@ interface Props {
 const Model = ({ content }: Props) => {
     const {closeModel} = useGlobalState();
     const {theme} = useGlobalState();
+    
   return (
     <ModelStyled theme={theme}>
         <div className="model-overlay" onClick={closeModel}></div>

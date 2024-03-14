@@ -16,6 +16,7 @@ export const GlobalProvider = ({ children }) => {
   const theme = themes[selectedTheme];
   const [tasks, setTasks] = useState([]);
   const [model, setModel] = useState(false);
+  const [collapsed, setCollapsed] = useState([]);
 
   const openModel = () => {
     setModel(true);
@@ -30,7 +31,16 @@ const closeModel = () => {
     try {
       const res = await axios.get("/api/tasks");
       setTasks(res.data);
+      const sorted = res.data.sort((a, b) => {
+       
+        return (
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      });
+      console.log(sorted);
+      setTasks(sorted);
       setIsLoading(false);
+
     } catch (error) {
         console.log(error);
         toast.error('Something went wrong!');
@@ -84,6 +94,7 @@ const closeModel = () => {
         model,
         openModel,
         closeModel,
+        allTasks,
       }}
     >
       <GlobalUpdateContext.Provider value={{}}>
